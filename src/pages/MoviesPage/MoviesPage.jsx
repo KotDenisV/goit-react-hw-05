@@ -4,12 +4,16 @@ import { getSearchMovies } from '../../api';
 import Loader from '../../components/Loader/Loader';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import MovieList from '../../components/MovieList/MovieList';
+import { Toaster } from 'react-hot-toast';
+
 
 const MoviesPage = () => {
     const [query, setQuery] = useState('');
     const [movie, setMovie] = useState([]);
     const [loader, setLoader] = useState(false);
     const [error, setError] = useState(false);
+    
+    
 
 
     useEffect(() => {
@@ -36,8 +40,9 @@ const MoviesPage = () => {
     return (
         <div>           
             <SearchBar onSubmit={handleSearchSubmit} />
-            {loader && <Loader />}
+            {loader && <Loader />}            
             {!loader && (error ? <NotFoundPage /> : <MovieList movie={movie} />)}
+            <Toaster />
         </div>
     );
 };

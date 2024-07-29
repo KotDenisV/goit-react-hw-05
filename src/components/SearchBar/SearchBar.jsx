@@ -18,7 +18,7 @@ function SearchBar({ onSubmit }) {
           <input
             className={s.input}
             name="query"
-            type="text"
+            type="search"
             autoComplete="off"
             autoFocus
             placeholder="Search muvies"

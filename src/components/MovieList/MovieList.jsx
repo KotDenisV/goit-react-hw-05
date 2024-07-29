@@ -5,7 +5,7 @@ const MovieList = ({ movie }) => {
   return (
     <ul className={s.list}>
           {movie.map((movies) => (
-          <Link key={movies.id} to='/movies/:movieId'>
+          <Link key={movies.id} to={`/movies/${movies.id}`}>
             <li className={s.listItem}>{movies.title} ({movies.release_date})</li>
           </Link>
       ))}

@@ -20,7 +20,14 @@ const getSearchMovies = async (query) => {
   return responce.data.results;
 };
 
+const getMovieById = async (movieId) => {
+  const responce = await axios.get(`movie/${movieId}`, options);
+  console.log(responce.data)
+  return responce.data;
+};
+
 export {
   getTrendingMovies,
-  getSearchMovies  
+  getSearchMovies,
+  getMovieById
 };
