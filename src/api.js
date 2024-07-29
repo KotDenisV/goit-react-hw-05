@@ -10,9 +10,17 @@ const options = {
 
 const getTrendingMovies = async () => {
   const responce = await axios.get('trending/movie/day', options);
+  console.log(responce.data.results)
+  return responce.data.results;
+};
+
+const getSearchMovies = async (query) => {
+  const responce = await axios.get(`search/movie?query=${query}`, options);
+  console.log(responce.data.results)
   return responce.data.results;
 };
 
 export {
-  getTrendingMovies  
+  getTrendingMovies,
+  getSearchMovies  
 };

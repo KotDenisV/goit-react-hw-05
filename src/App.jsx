@@ -5,13 +5,15 @@ import MovieDetailsPage from './pages/MovieDetailsPage/MovieDetailsPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import MovieReviews from './components/MovieReviews/MovieReviews';
 import MovieCast from './components/MovieCast/MovieCast';
+import Navigation from './components/Navigation/Navigation';
 
 function App() {
   
 
-  return (    
-      <div>
-        <Routes>
+  return (
+    <div>
+      <Navigation />
+      <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/movies' element={<MoviesPage />} />
         <Route path='/movies/:movieId' element={<MovieDetailsPage />} >
@@ -20,8 +22,8 @@ function App() {
         </Route>
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
-      </div>    
-  )
+    </div>
+  );
 }
 
 export default App
