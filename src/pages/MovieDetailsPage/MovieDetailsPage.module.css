@@ -1,0 +1,25 @@
+.wrapperNav {
+  display: flex;
+  gap: 50px;
+  margin-top: 50px;
+  padding-left: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.active {
+  color: blue;
+}
+
+.wrapperMovie {
+  display: flex;
+  gap: 20px;
+  justify-content: start;
+  align-items: start;
+}
+
+.genres {
+  display: flex;
+  gap: 10px;
+  justify-content: start;
+}

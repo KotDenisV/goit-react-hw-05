@@ -26,8 +26,23 @@ const getMovieById = async (movieId) => {
   return responce.data;
 };
 
+const getCastById = async (id) => {
+  const responce = await axios.get(`/movie/${id}/credits`, options);
+  console.log(responce.data.cast)
+  return responce.data.cast;
+};
+
+const getReviewsById = async (id) => {
+  const responce = await axios.get(`/movie/${id}/reviews`, options);
+  console.log(responce.results)
+  return responce.data.results;
+};
+
+
 export {
   getTrendingMovies,
   getSearchMovies,
-  getMovieById
+  getMovieById,
+  getCastById,
+  getReviewsById  
 };
