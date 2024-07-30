@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getCastById } from "../../api";
 import Loader from "../Loader/Loader";
+import s from './MovieCast.module.css';
 
 const MovieCast = () => {
     const [actors, setActors] = useState();
     const [loader, setLoader] = useState(false);
     const { movieId } = useParams();
-    console.log("MovieCast:", movieId);
-
+    
     useEffect(() => {
         const fetchCast = async () => {
             try {
@@ -29,9 +29,9 @@ const MovieCast = () => {
     }
 
     return (
-        <div>
+        <div className={s.wrapper}>
             {loader && <Loader />}
-            <h1>Movie Cast</h1>
+            <h2>Movie Cast</h2>
             <ul>
                 {actors.map(actor => (
                     <li key={actor.id}>

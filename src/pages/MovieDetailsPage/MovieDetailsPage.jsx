@@ -1,25 +1,23 @@
-import { useState, useEffect } from "react";
-import { NavLink, Outlet, useParams } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { Link, NavLink, Outlet, useParams, useLocation } from "react-router-dom";
 import { getMovieById } from "../../api";
 import Loader from "../../components/Loader/Loader";
 import s from './MovieDetailsPage.module.css';
 import clsx from 'clsx';
-
-
 
 const MovieDetailsPage = () => {
     const [movie, setMovie] = useState({});
     const [loader, setLoader] = useState(false);
     const [error, setError] = useState(false);
     const { movieId } = useParams();
-    console.log("MovieDetailsPage:", movieId);
-
+    const location = useLocation();    
+    const goBackRef = useRef(location?.state ?? '/movies');
+    
     useEffect(() => {
         const fetchMovieById = async () => {
             try {
                 setLoader(true);
-                const data = await getMovieById(movieId);
-                console.log(`try:${data}`);
+                const data = await getMovieById(movieId);                
                 setMovie(data);                
             } catch (error) {
                 setError(error.message);
@@ -41,6 +39,7 @@ return clsx(s.link, isActive && s.active);
 
     return (
         <div>
+            <Link to={goBackRef.current}>Go back</Link>            
             {loader && <Loader />}
             <div className={s.wrapperMovie}>               
                 <img

@@ -9,32 +9,27 @@ const options = {
 };
 
 const getTrendingMovies = async () => {
-  const responce = await axios.get('trending/movie/day', options);
-  console.log(responce.data.results)
+  const responce = await axios.get('trending/movie/day', options);  
   return responce.data.results;
 };
 
 const getSearchMovies = async (query) => {
-  const responce = await axios.get(`search/movie?query=${query}`, options);
-  console.log(responce.data.results)
+  const responce = await axios.get(`search/movie?query=${query}`, options);  
   return responce.data.results;
 };
 
 const getMovieById = async (movieId) => {
-  const responce = await axios.get(`movie/${movieId}`, options);
-  console.log(responce.data)
+  const responce = await axios.get(`movie/${movieId}`, options);  
   return responce.data;
 };
 
 const getCastById = async (id) => {
-  const responce = await axios.get(`/movie/${id}/credits`, options);
-  console.log(responce.data.cast)
+  const responce = await axios.get(`/movie/${id}/credits`, options);  
   return responce.data.cast;
 };
 
 const getReviewsById = async (id) => {
-  const responce = await axios.get(`/movie/${id}/reviews`, options);
-  console.log(responce.results)
+  const responce = await axios.get(`/movie/${id}/reviews`, options);  
   return responce.data.results;
 };
 
