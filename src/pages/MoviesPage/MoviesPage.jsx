@@ -8,7 +8,7 @@ import { Toaster } from 'react-hot-toast';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
 const MoviesPage = () => {
-    const [query, setQuery] = useState('');
+    // const [query, setQuery] = useState('');
     const [movie, setMovie] = useState([]);
     const [loader, setLoader] = useState(false);
     const [error, setError] = useState(false);
@@ -32,15 +32,16 @@ const MoviesPage = () => {
             }
         };
         fetchSearchMovie();
-    }, [query]);
+    }, [searchParams]);
 
     const handleSearchSubmit = (newQuery) => {
-        setQuery(newQuery);
+        // setQuery(newQuery);
         if (!newQuery) {      
           return setSearchParams({});
         }
-        searchParams.set('query', newQuery);
-        setSearchParams(searchParams);    
+        // searchParams.set('query', newQuery);
+        // setSearchParams(searchParams);    
+        setSearchParams({ query: newQuery }); 
     };
 
     return (
