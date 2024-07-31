@@ -5,8 +5,9 @@ import Loader from "../Loader/Loader";
 import s from './MovieReviews.module.css';
 
 const MovieReviews = () => {
-   const [reviews, setReviews] = useState();
+   const [reviews, setReviews] = useState([]);
     const [loader, setLoader] = useState(false);
+    const [error, setError] = useState(null);
     const { movieId } = useParams();
     console.log("MovieCast:", movieId);
 
@@ -15,9 +16,9 @@ const MovieReviews = () => {
             try {
                 setLoader(true);
                 const data = await getReviewsById(movieId);                
-                setReviews(data);                
+                setReviews(data || []);                
             } catch (error) {
-                console.log(error);
+                setError(error.message);
             } finally {
                 setLoader(false);
             }
@@ -25,13 +26,16 @@ const MovieReviews = () => {
         fetchReviews();        
     }, [movieId]);
 
-    if (!reviews) {
+    if (loader) {
         return <Loader />;
     }
 
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
+
     return (
-        <div className={s.wrapper}>
-            {loader && <Loader />}            
+        <div className={s.wrapper}>                   
             {reviews.length > 0 ? (
                 <ul>
                     {reviews.map(review => (
